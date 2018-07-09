@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Cook\'s Illustrated';
+
+  itemValue = '';
+  items: Observable<any[]>;
+
+  constructor(private router: Router, private db: AngularFireDatabase) {
+    this.items = db.list('issues').valueChanges();
+  }
+
+
 }

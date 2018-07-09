@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-3" *ngIf="recipeTypes">
+    <label for="recipeTypeFilter">Filter:</label>
+    <select [(ngModel)]="recipeTypeFilter" id="recipeTypeFilter">
+      <option value="">All</option>
+      <option *ngFor="let recipeType of recipeTypes" value="{{ recipeType}}">{{ recipeType }}</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="searchText">Search:</label>
+    <input
+           [(ngModel)]="searchText"
+           id="searchText"
+           type="text" />
+  </div>
+  <div class="col-md-3">
+    <!-- <label for="hasBeenMade">Has been made:</label>
+    <input type="checkbox"
+      [(ngModel)]="hasBeenMade"
+      id="hasBeenMade"
+      name="hasBeenMade" /> -->
+  </div>
+</div>
+<hr />
+
+<div class="container-fluid">
+    <div class="row">
+        <div *ngFor="let recipe of filteredRecipes" class="col-md-3">
+          <a [routerLink]="['/recipes', recipe.key]">
+            <img src="/assets/images/recipes/{{recipe.imageUrl}}" width="100" /><br />
+            {{recipe.recipeTitle}}
+          </a>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home">Cook's Illustrated</a>
+    </div>
+  </div>
+  <ul class="nav navbar-nav">
+    <li><a [routerLink]="['/issues']">Issues</a></li>
+    <li><a [routerLink]="['/issues', 'new', 'edit']">Add Issue</a></li>
+    <li><a [routerLink]="['/recipes']">Recipes</a></li>
+    <li><a [routerLink]="['/recipes/new/edit']">Add Recipe</a></li>
+  </ul>
+  <ul class="nav navbar-nav pull-right" *ngIf="this.authService.isLoggedIn() === false">
+      <li><a (click)="this.login()">Login</a></li>
+    </ul>
+  <ul class="nav navbar-nav pull-right" *ngIf="this.authService.isLoggedIn() === true">
+    <li><a>{{ this.authService.userDetails.email }}</a></li>
+    <li><a (click)="this.logout()">Logout</a></li>
+  </ul>
+</div>

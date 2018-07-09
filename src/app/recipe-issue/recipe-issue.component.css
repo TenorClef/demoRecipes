@@ -1,0 +1,11 @@
+mat-option {
+  background-color: orange;
+}
+
+#oldIssues div.row {
+  margin-bottom: 15px;
+}
+
+.glyphicon-remove {
+  cursor: pointer;
+}

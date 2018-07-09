@@ -1,1 +1,51 @@
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
 /* You can add global styles to this file, and also import other style files */
+
+.panel-primary > .panel-heading {
+  background-color: orange;
+  border-color: orange;
+}
+
+.panel-primary {
+  border-color: orange;
+}
+
+app-recipe-detail {
+  width: 100%;
+}
+
+app-recipe-edit {
+  width: 100%;
+}
+
+app-issue-detail {
+  width: 100%;
+}
+
+app-issue-edit {
+  width: 100%;
+}
+
+a.btn-default {
+  margin-left: 15px;
+}
+

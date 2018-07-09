@@ -1,0 +1,50 @@
+<div class="panel panel-primary" *ngIf="issue">
+  <div class="panel-heading">{{ pageTitle }}</div>
+
+  <div class="panel-body">
+    <form class="form-horizontal" #issueForm="ngForm">
+      <fieldset>
+        <legend>Issue</legend>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="issueTitle">Issue Title</label>
+          <div class="col-md-8">
+            <input class="form-control" id="issueTitle" type="text" placeholder="Issue Title (required)" required="required" minLength="3"
+              [(ngModel)]="issue.issueTitle" name="issueTitle" #issueTitleVar="ngModel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="month">Date</label>
+          <div class="col-md-2">
+            <select class="form-control" id="month" required="required" [(ngModel)]="issue.month" name="month" #monthVar="ngModel">
+              <option class="option" *ngFor="let month of allMonths" [value]="month.value">{{ month.label }}</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <input class="form-control" id="year" type="number" placeholder="Year (required)" required="required" minLength="4" [(ngModel)]="issue.year"
+              name="year" #yearVar="ngModel" size="4" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label">Image Url</label>
+          <div class="col-md-6">
+            <input class="form-control" id="imageUrl" type="text" placeholder="Image URL" [(ngModel)]="issue.imageUrl" name="imageUrl"
+              #imageUrlVar="ngModel" />
+          </div>
+          <div class="col-md-2">
+            <img *ngIf="this.issue.id !== 'new'" src="/assets/images/issues/{{ issue.imageUrl }}" width="100" />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="panel-footer">
+    <span>
+      <button class="btn btn-primary" type="button" style="width: 80px; margin-right: 10px" (click)="saveIssue()">
+        Save
+      </button>
+    </span>
+    <span *ngIf="this.issue.id !== 'new'">
+      <a class="btn btn-warning" (click)="openDialog()">Delete this issue</a>
+    </span>
+  </div>
+</div>

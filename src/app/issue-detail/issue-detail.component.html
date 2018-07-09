@@ -1,0 +1,24 @@
+<div class="panel panel-primary" *ngIf="issue">
+  <div class="panel-heading">
+    {{ issue.issueTitle }} - {{ issue.month | monthToString }} {{ issue.year }}
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+      <img src="/assets/images/issues/{{ issue.imageUrl}}" alt="" />
+    </div>
+    <div class="col-md-6">
+      <div>
+        <a [routerLink]="['/issues', issue.id, 'edit']">Edit Issue</a>
+      </div>
+      <h2>Recipes</h2>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let issueRecipe of recipes">
+          <a [routerLink]="['/recipes', issueRecipe.recipe.key]">
+            <img src="/assets/images/recipes/{{ issueRecipe.recipe.imageUrl }}" alt="" width="100" /><br />
+            {{ issueRecipe.recipe.recipeTitle }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

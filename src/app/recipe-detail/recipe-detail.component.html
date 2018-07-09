@@ -1,0 +1,21 @@
+<div class="panel panel-primary" *ngIf="recipe">
+  <div class="panel-heading">{{ recipe.recipeTitle }}</div>
+  <div class="panel-body">
+    <div class="col-md-8">
+      <img src="/assets/images/recipes/{{recipe.imageUrl}}" />
+    </div>
+    <div class="col-md-4">
+      <div>Type of recipe: <strong>{{ recipe.recipeType }}</strong></div>
+      <div><a [routerLink]="['/recipes', recipe.key, 'edit']"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Edit Recipe</a></div>
+      <h2>Issues</h2>
+      <ul *ngIf="recipeIssues" class="list-group">
+        <li *ngFor="let recipeIssue of recipeIssues" class="list-group-item">
+          <a [routerLink]="['/issues', recipeIssue.issue.id]">
+            <img src="/assets/images/issues/{{ recipeIssue.issue.imageUrl }}" width="100" />
+            {{ recipeIssue.issue.issueTitle }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

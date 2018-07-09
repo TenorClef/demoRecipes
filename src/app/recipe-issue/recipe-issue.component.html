@@ -1,0 +1,50 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Found in Issues:
+  </div>
+  <div class="panel-body">
+    <div id="newIssue" class="row">
+      <div class="col-md-3">
+          <label for="newIssueText" class="control-label" (click)="clearSelectedIssue()">Issue Title</label>
+      </div>
+     <div class="col-md-3">
+        <mat-form-field>
+            <input matInput type="text"
+                   (blur)="findIssue()"
+                   id="newIssueText"
+                   [(ngModel)]="newIssueText"
+                   name="newIssueText"
+                   [matAutocomplete]="auto" />
+            <mat-autocomplete  #auto="matAutocomplete">
+              <mat-option *ngFor="let issue of allIssuesFiltered" [value]="issue.issueTitle" (click)="onIssueSelected(issue)">
+                <span>{{ issue.issueTitle }}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+     </div>
+
+      <div class="col-md-3">
+        <img *ngIf="newIssueImageUrl"
+             src="{{ newIssueImageUrl }}"
+             width="50" />
+        <button *ngIf="newIssue"
+                type="button"
+                class="btn btn-default"
+                (click)="onBtnClick()">
+          Save
+        </button>
+      </div>
+    </div>
+    <hr />
+
+    <div id="oldIssues">
+      <div class="row" *ngFor="let recipeIssue of recipeIssues">
+        <div class="col-md-6">{{ recipeIssue.issue.issueTitle }}</div>
+        <div class="col-md-3"><img src="/assets/images/issues/{{ recipeIssue.issue.imageUrl }}" width="50" /></div>
+        <div class="col-md-3">
+          <i class="glyphicon glyphicon-remove" (click)="removeIssue(recipeIssue.id, recipeIssue.issue.id)"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

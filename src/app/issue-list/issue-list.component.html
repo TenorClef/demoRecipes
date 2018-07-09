@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Issues
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let issue of issues">
+        <a [routerLink]="['/issues', issue.id]">
+          <img src="/assets/images/issues/{{issue.imageUrl}}" width="100" /><br />
+          {{ issue.issueTitle }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

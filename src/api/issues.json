@@ -1,0 +1,7 @@
+{"issues":[
+    {"id":1,"issueTitle":"The Best of 2016","month":3,"year":2016,"imageUrl":"BestOf2016.jpg"},
+    {"id":2,"issueTitle":"All-Time Best Chicken Recipes","month":9,"year":2014,"imageUrl":"BestChickenRecipes.jpg"},
+    {"id":3,"issueTitle":"The Best of 2015","month":3,"year":2015,"imageUrl":"BestOf2015.jpg"},
+    {"id":4,"issueTitle":"2017 Annual","month":2,"year":2018,"imageUrl":"2017Annual.jpg"},
+    {"id":5,"issueTitle":"All-Time Best Spring Recipes","month":6,"year":2018,"imageUrl":"Spring.jpg"}
+]}

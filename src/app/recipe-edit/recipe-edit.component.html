@@ -1,0 +1,85 @@
+<div class="panel panel-primary" *ngIf="recipe">
+  <div class="panel-heading">
+    {{ pageTitle }}
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" #recipeForm="ngForm">
+      <fieldset>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="recipeTitle">Recipe Title</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                   id="recipeTitle"
+                   type="text"
+                   placeholder="Recipe title (required)"
+                   required="required"
+                   minlength="3"
+                   [(ngModel)]="recipe.recipeTitle"
+                   name="recipeTitle"
+                   #recipeTitleVar="ngModel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="recipeType">Recipe Type</label>
+          <div class="col-md-8">
+            <select class="form-control"
+                    id="recipeType"
+                    required="required"
+                    [(ngModel)]="recipe.recipeType"
+                    name="recipeType"
+                    #recipeTypeIdVar="ngModel">
+              <option *ngFor="let recipeType of allRecipeTypes" value="{{ recipeType}}">{{ recipeType }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="imageUrl">Image Url</label>
+          <div class="col-md-8 checkbox">
+            <input class="form-control"
+                   id="imageUrl"
+                   type="text"
+                   [(ngModel)]="recipe.imageUrl"
+                   name="imageUrl"
+                   #imageUrlVar="ngModel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="hasBeenMade">Has been made</label>
+          <div class="col-md-8">
+            <input class="form-control checkbox form-check-input"
+                   id="hasBeenMade"
+                   type="checkbox"
+                   [(ngModel)]="recipe.hasBeenMade"
+                   name="hasBeenMade"
+                   #hasBeenMadeVar="ngModel" />
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-6 col-lg-offset-2">
+        <span>
+          <button class="btn btn-primary"
+                  type="button"
+                  style="width: 80px; margin-right: 10px"
+                  (click)="saveRecipe()">
+            Save
+          </button>
+        </span>
+        <span>
+          <a class="btn btn-default"
+          style="width: 80px; margin-right: 10px"
+             (click)="cancel()">Cancel</a>
+        </span>
+        <span *ngIf="this.id !== 'new'">
+          <a class="btn btn-warning"
+          (click)="openDialog()">Delete this recipe</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-recipe-issue [recipe]="recipe" *ngIf="recipe && recipe.key != 'new'"></app-recipe-issue>
