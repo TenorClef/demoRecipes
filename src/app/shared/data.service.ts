@@ -37,6 +37,7 @@ export class DataService {
               recipeType: unwrappedObject['recipeType'],
               hasBeenMade: unwrappedObject['hasBeenMade']
             };
+            console.log(recipe);
             this.recipes.push(recipe);
           });
         });
@@ -46,24 +47,6 @@ export class DataService {
   getRecipe(id: string) {
     return this._db.list(`/recipes/${id}`).snapshotChanges();
   }
-
-  // searchRecipes(recipeTypeId: number, searchText: string): Observable<IRecipe[]> {
-  //   let url: string = this._baseUrl + 'Recipes/Search/' + recipeTypeId.toString();
-  //   if (searchText != null && searchText !== '') {
-  //     url += '/' + searchText;
-  //   }
-  //   return this._http.get(url)
-  //     .map(this.extractData)
-  //     .catch(this.handleError);
-  // }
-
-  // getRecipesByIssue(issueId: string): Observable<IRecipe[]> {
-  //   const url: string = this._baseUrl + 'Issues/' + issueId.toString() + '/Recipes';
-  //   const returnedIssues: Observable<IRecipe[]> = this._http.get(url)
-  //     .map(this.extractData)
-  //     .catch(this.handleError);
-  //   return returnedIssues;
-  // }
 
   getRecipeTypes(): string[] {
     const recipeTypes: string[] = [
@@ -107,12 +90,13 @@ export class DataService {
   saveRecipe(recipe: IRecipe): void {
     if (recipe.key === 'new') {
       // New recipe
+      console.log(recipe);
       recipe.key = this._db.list('/recipes').push({ content: recipe }).key;
-    } else {
-      // Edit existing recipe
-      this._db.object(`/recipes/${recipe.key}`).set({ content: recipe });
+      console.log(recipe.key);
     }
-
+      // To store the actual key in the id field, instead of the string 'new', the
+      // recipe is saved again following the "if" block.
+      this._db.object(`/recipes/${recipe.key}`).set({ content: recipe });
   }
 
   deleteRecipe(key) {

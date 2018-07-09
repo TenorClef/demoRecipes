@@ -55,7 +55,7 @@ export class RecipeEditComponent implements OnInit {
 
   initializeRecipe() {
     this.recipe = {
-      key: '',
+      key: 'new',
       recipeTitle: '',
       imageUrl: '',
       recipeType: '',
@@ -73,6 +73,7 @@ export class RecipeEditComponent implements OnInit {
   }
 
   saveRecipe(): void {
+    console.log('On recipe edit page: ', this.recipe);
     this._dataService.saveRecipe(this.recipe);
 
     this._router.navigate([`/recipes/${this.id}`]);
