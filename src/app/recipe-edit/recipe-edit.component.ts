@@ -73,10 +73,11 @@ export class RecipeEditComponent implements OnInit {
   }
 
   saveRecipe(): void {
-    console.log('On recipe edit page: ', this.recipe);
-    this._dataService.saveRecipe(this.recipe);
-
-    this._router.navigate([`/recipes/${this.id}`]);
+    this._dataService.saveRecipe(this.recipe)
+    .subscribe(data => {
+      this.id = data;
+      this._router.navigate([`/recipes/${this.id}`]);
+    });
   }
 
   cancel() {
