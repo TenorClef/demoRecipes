@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-3" *ngIf="recipeTypes">
     <label for="recipeTypeFilter">Filter:</label>
     <select [(ngModel)]="recipeTypeFilter" id="recipeTypeFilter">
@@ -14,22 +14,24 @@
            type="text" />
   </div>
   <div class="col-md-3">
-    <!-- <label for="hasBeenMade">Has been made:</label>
+    <label for="hasBeenMade">Has been made:</label>
     <input type="checkbox"
       [(ngModel)]="hasBeenMade"
       id="hasBeenMade"
-      name="hasBeenMade" /> -->
+      name="hasBeenMade" />
   </div>
 </div>
-<hr />
+<hr /> -->
 
-<div class="container-fluid">
-    <div class="row">
-        <div *ngFor="let recipe of filteredRecipes" class="col-md-3">
-          <a [routerLink]="['/recipes', recipe.key]">
-            <img src="/assets/images/recipes/{{recipe.imageUrl}}" width="100" /><br />
-            {{recipe.recipeTitle}}
-          </a>
-        </div>
+<hr />
+<div class="row">
+    <div *ngFor="let recipe of filteredRecipes" class="col-md-2 card">
+      <img src="/assets/images/recipes/{{recipe.imageUrl}}" class="thumbnail"  />
+      <div class="container">
+        <a [routerLink]="['/recipes', recipe.key]">          
+          {{recipe.recipeTitle}}
+        </a>
       </div>
+    </div>
 </div>
+<hr />
